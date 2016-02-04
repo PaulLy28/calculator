@@ -18,7 +18,6 @@
     border-radius: 2%;
 }
 
-
 button {
     width: 24%;
     padding-bottom: 25%;
@@ -39,7 +38,6 @@ button {
     font-size: 2vw;
     border-radius: 10%
 
-
 }
 
 button span {
@@ -53,11 +51,9 @@ button span {
 @media screen and (max-width: 375px) {
     .calculator {
         width: 95%;
-
     }
     button {
         width: 23.5%;
-
     }
     button span {
         font-size: 6vw;
