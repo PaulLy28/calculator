@@ -15,11 +15,12 @@ var my_calculator = new calculator(callback);
 //click handlers added to buttons
 $(document).ready(function(){
     $("button").click(function(){
-        if (value == "CE") {
+        var val =$(this).text();
+        if (val == "CE") {
             my_calculator.allClear();
         }
         else {
-            my_calculator.addItem($(this).text());
+            my_calculator.addItem(val);
         }
     });
-})
+});
