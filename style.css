@@ -1,3 +1,12 @@
+.calculator {
+    width: 30%;
+    background-color: #6a6969;
+    box-sizing: border-box;
+    padding: 1px;
+    margin: auto;
+    border-radius: 2%;
+}
+
 .display {
     height: 100px;
     box-sizing: border-box;
@@ -5,33 +14,31 @@
     text-align: right;
     background-color: darkolivegreen;
     font-size: 4em;
+    margin: 1% 1%;
+    border-radius: 2%;
 }
 
-.calc-body {
-    width: 30%;
-    background-color: #6a6969;
-    box-sizing: border-box;
-    padding: 1px;
-    margin: auto;
 
-}
 button {
     width: 24%;
     padding-bottom: 25%;
     display: inline-block;
     background-color: orangered;
-    margin: 0;
+    margin: .2% .2%;
     position: relative;
     vertical-align: top;
     color: black;
     border 1px solid green;
+    border-radius: 20%;
 }
 
-.clear {
+#clear {
     width:49%;
-    padding-bottom: 20%;
+    padding-bottom: 15%;
     background-color: white;
     font-size: 2vw;
+    border-radius: 10%
+
 
 }
 
@@ -41,7 +48,16 @@ button span {
     top: 50%;
     left: 52%;
     transform: translate(50%,50%);
+
 }
 
 
+@media screen and (max-width: 375px) {
+    .calc-body {
+        width: 95%;
+    }
 
+    button span {
+        font-size: 8vw;
+    }
+}
