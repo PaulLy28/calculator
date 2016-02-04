@@ -47,17 +47,22 @@ button span {
     position: absolute;
     top: 50%;
     left: 52%;
-    transform: translate(50%,50%);
-
+    transform: translate(50%, 50%);
 }
 
-
 @media screen and (max-width: 375px) {
-    .calc-body {
+    .calculator {
         width: 95%;
-    }
 
+    }
+    button {
+        width: 23.5%;
+
+    }
     button span {
+        font-size: 6vw;
+    }
+    #clear {
         font-size: 8vw;
     }
 }
