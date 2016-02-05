@@ -9,6 +9,7 @@
 
 #display {
     height: 100px;
+    width: 557px;
     box-sizing: border-box;
     padding: 20px 20px 10px 10px;
     text-align: right;
@@ -16,6 +17,8 @@
     font-size: 4em;
     margin: 1% 1%;
     border-radius: 2%;
+/*without this if you click on a number 17 times it will be displayed inside the "display screen" but if you click it anymore than that it will flow out of the "display screen." need to cap off amount of numbers that can be clicked, because even if the overflow of numbers/operators are hidden it still might be storing those values to be used*/
+    overflow: hidden;
 }
 
 button {

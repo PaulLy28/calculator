@@ -28,6 +28,9 @@
  }
  });
  });*/
+/* n[i] is an array of operators and operands that have been entered
+["+", "-", "*","/"].indexOf(n[i]);
+*/
 var input_storage = [''];
 var storage_index = 0;
 $(document).ready(function(){
@@ -105,8 +108,13 @@ function update_display(){
 //@global:
 //input_array - storage for all operands and operators
 //current_index - the current position in the input_array
-function perform_calculation(){
 
+function perform_calculation(){
+    for(var i=0; i<=input_array.length; i+=2){
+        var op1 = input_array[i];
+            if statement to store op1 and then op2 and operator
+       }
+   }
 }
 
 //function do_math
