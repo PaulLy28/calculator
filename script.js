@@ -44,17 +44,15 @@ $(document).ready(function(){
         store_operator($(this).text());
     });
 
+    $(".numbers > #equalSign").click(function(){
+        console.log("equal button clicked");
+        console.log("this is", this);
+        do_math();
+       // update_display();
+    });
+
 });
 
-
-//@purpose: get the number from the button and store into a variable, then update display
-//@params:
-//button_value - the value of the button that was clicked
-//@return:
-//none
-//@global:
-//input_storage : the storage for all inputs
-//storage_index : the index of the current position in input_storage
 function store_number(button_value){
     console.log('store number button_value',button_value);
     input_storage[storage_index]+=button_value;
@@ -62,15 +60,6 @@ function store_number(button_value){
     update_display();
 }
 
-
-//@purpose: get the operator from the button and store it into that array ("that array" he says.  like I'm just some sort of transcriptionist. oohhhhhh, that array... input storage, that makes sense.... I guess)
-//@params:
-//button_value - the value of the button that was clicked
-//@return:
-//none
-//@global:
-//input_storage : the storage for all inputs
-//storage_index : the index of the current position in input_storage
 function store_operator(button_value){
     console.log('store operator button_value',button_value);
     storage_index++;
@@ -81,14 +70,6 @@ function store_operator(button_value){
     update_display();
 }
 
-
-//@purpose: display that have been into input_storage
-//@params:
-//none
-//@return:
-//none
-//@global:
-//input_storage : the storage for all inputs
 function update_display(){
     var output = '';
     for(var i=0; i<input_storage.length; i++){
@@ -97,34 +78,49 @@ function update_display(){
     $("#display").text(output);
 }
 
-//function perform_calculation
-//@purpose: perform math based on passed in values: op1, op2, and the operator, then decide which math to perform based on the operator
-//@params:
-//op1 - the first operand
-//op2 - the second operand
-//operator - the operator to perform
-//@return:
-//the result of the math
-//@global:
-//input_array - storage for all operands and operators
-//current_index - the current position in the input_array
-
-function perform_calculation(){
-    for(var i=0; i<=input_array.length; i+=2){
-        var op1 = input_array[i];
-            if statement to store op1 and then op2 and operator
-       }
-   }
+function perform_calculation(op1, op2, operator){
+    var solution;
+    switch (operator) {
+        case "+":
+            solution = (op1 + op2);
+            break;
+        case "-":
+            solution = (op1 - op2);
+            break;
+        case "*":
+            solution = (op1 * op2);
+            break;
+        case "/":
+            solution = (op1 / op2);
+            break;
+    }
+    calc_display(solution);
+        if (solution == 0){
+            input_storage = [""];
+        }
+        else {
+            input_storage = [solution, ""];
+        }
 }
 
-//function do_math
-//@purpose: iterate through input_array and fetch required data to perform math, then pass them to perform_calculation
-//@params:
-//none
-//@return:
-//none
-//@global:
-//input_array - storage for all operands and operators
 function do_math(){
+    for(var i=0; i < input_storage.length; i++){
+        if (i == 0){
+            var op1 = parseFloat(input_storage[i]);
+        }
+        else if (i == 1) {
+            var operator = input_storage[i];
+        }
+        else if (i == 2) {
+            var op2 = parseFloat(input_storage[i]);
+        }
+        else {
+            $("#display").text("error");
+        }
+    }
+    perform_calculation(op1, op2, operator);
+}
 
+function calc_display(solve_equation) {
+    $("#display").text(solve_equation);
 }
