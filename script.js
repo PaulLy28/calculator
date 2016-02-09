@@ -10,6 +10,8 @@ var storage_index = 0;
 var operatorOn = false;
 var numbersOn = true;
 var decimalsOn = true;
+var lastNum;
+var lastOp;
 $(document).ready(function(){
     $('.numbers > #numbers').click(function(){
         console.log('this is ',this);
@@ -25,8 +27,30 @@ $(document).ready(function(){
         console.log("equal button clicked");
         console.log("this is", this);
         var a = input_storage.length;
-        if (a > 2 && a % 2 !=0) {
+        console.log("a last value: ",a,  input_storage[a]);
+        if (a > 2 && input_storage[a -1] != "") {
             do_math();
+        }
+        else if (a == 1) {
+            input_storage[1] = lastOp;
+            input_storage[2]= lastNum;
+            do_math();
+        }
+        else if (a > 2 && input_storage[a -1] == ""){
+            //input_storage[1] = lastOp;
+            //input_storage[2] = input_storage[0];
+            if (a == 3){
+                input_storage[2] = input_storage[0];
+                do_math();
+            }
+            else {
+                input_storage.pop();
+                var lastStoredOp = input_storage.pop();
+                do_math();
+                input_storage[1] = lastStoredOp;
+                input_storage[2] = input_storage[0];
+                do_math();
+            }
         }
     });
 
@@ -159,6 +183,8 @@ function do_math(){
             newOperator = input_storage[i];
             numAfter = input_storage[i+1];
             console.log("total: ", total + " newop:", newOperator + " 2nd num: ", numAfter);
+            lastOp = newOperator;
+            lastNum = numAfter;
             total = perform_calculation(parseFloat(total),parseFloat(numAfter),newOperator);
 
         }
