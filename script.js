@@ -1,41 +1,10 @@
-/*
- //defined callback function
- function callback(type,value,item){
- if (value == undefined) {
- $(".display").text("");
- }
- else {
- $(".display").text(value);
- }
- }
+/*basic calculator*/
 
- //my_calculator - creates a new calculator object
- var my_calculator = new calculator(callback);
-
-
- //jQuery document onload function
- $(document).ready(function(){
- //jQuery buttons click function
- $("button").click(function(){
- //var name val is equal to "$(this)" which is referring to the button click function ".text()" which is the text in that button tag
- var val =$(this).text();
- //if statement with the condition: if variable val (defined above) is equal in value to string "CE" OR variable val is equal in value to string "C", (if true) the block of code to be executed will clear the display. ELSE (if false) the value will be added to the display
- if (val == "CE" || val == "C") {
- my_calculator.allClear();
- }
- else {
- my_calculator.addItem(val);
- }
- });
- });*/
-/* n[i] is an array of operators and operands that have been entered
-["+", "-", "*","/"].indexOf(n[i]);
-*/
 //declare global variables. set storage to an empty array with an empty string and declare index position as 0.
-//set onload and click handlers
-    //jQuery selector to select the class numbers and all childs with the ID of numbers with a click handler function.  the function will display the stored number when one of the buttons is clicked and display the text of the button clicked
-    //jQuery selector to select the class numbers and all childs with the ID of operator with a click handler function.  the function will display the stored operator when one of the buttons is clicked and display the text of the button clicked
-    //jQuery selector to select the class numbers and all childs with the ID of equalSign with a click handler function.  the function will call a function to complete the math done between the stored number and store operator.
+//set on load and click handlers
+    //jQuery selector to select the class numbers and all child's with the ID of numbers with a click handler function.  the function will display the stored number when one of the buttons is clicked and display the text of the button clicked
+    //jQuery selector to select the class numbers and all child's with the ID of operator with a click handler function.  the function will display the stored operator when one of the buttons is clicked and display the text of the button clicked
+    //jQuery selector to select the class numbers and all child's with the ID of equalSign with a click handler function.  the function will call a function to complete the math done between the stored number and store operator.
 var input_storage = [''];
 var storage_index = 0;
 $(document).ready(function(){
@@ -55,15 +24,16 @@ $(document).ready(function(){
         do_math();
     });
 
-    $(".numbers > #clearAll").click(function(){
+    $(".row > #clearAll").click(function(){
         console.log("clear all button clicked");
         clear_all();
     });
 
-    $(".numbers > #clearOne").click(function(){
+    $(".row > #clearOne").click(function(){
         console.log("clear one button clicked");
         clear_one();
     });
+
 });
 
 //a function to store the value of the number clicked with a parameter of the value of the button that was clicked
@@ -103,7 +73,7 @@ function update_display(){
     }
     $("#display").text(output);
 }
-//this will perform the calculation of each operand and operator.  a function has been defined with 3 paramenters, 2 operands and an operator
+//this will perform the calculation of each operand and operator.  a function has been defined with 3 parameters, 2 operands and an operator
     //a variable with a name of solution set to undefined
     //switch statement with the expression of operator and 4 cases.
         //1st case is set to operator of +, if true, then the solution will be the sum of the two operand. break will be the end of the switch. it will then proceed to the function call of calc_display. calc_display has a parameter of the variable declared which is solution in this case. when the calc_display function with a parameter of solution is called it will set the array equal to an array with the solution. if false it will move to the next case.
@@ -172,10 +142,12 @@ function clear_all(){
     $("#display").empty();
     input_storage = [""];
     storage_index =0;
-    $("#display").text("");
+    $("#display").text(0);
 }
 
 function clear_one(){
     input_storage.pop();
-    $("#display").text(input_storage[i]);
+    //--storage_index;
+    input_storage[storage_index]='';
+    $("#display").text(input_storage);
 }
