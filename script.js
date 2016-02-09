@@ -7,6 +7,9 @@
     //jQuery selector to select the class numbers and all child's with the ID of equalSign with a click handler function.  the function will call a function to complete the math done between the stored number and store operator.
 var input_storage = [''];
 var storage_index = 0;
+var operatorOn = false;
+var numbersOn = true;
+var decimalsOn = true;
 $(document).ready(function(){
     $('.numbers > #numbers').click(function(){
         console.log('this is ',this);
@@ -21,7 +24,10 @@ $(document).ready(function(){
     $(".numbers > #equalSign").click(function(){
         console.log("equal button clicked");
         console.log("this is", this);
-        do_math();
+        var a = input_storage.length;
+        if (a > 2 && a % 2 !=0) {
+            do_math();
+        }
     });
 
     $(".row > #clearAll").click(function(){
@@ -40,10 +46,22 @@ $(document).ready(function(){
     //the input array that is going to store the numbers will be the variable name for the array at the variable name for the position of the index plus the value of the button.
     //call the function to update the display
 function store_number(button_value){
-    console.log('store number button_value',button_value);
-    input_storage[storage_index]+=button_value;
-    console.log('input storage: ',input_storage);
-    update_display();
+    if (button_value == "."){
+        if (numbersOn && decimalsOn){
+            console.log('store number button_value',button_value);
+            input_storage[storage_index]+=button_value;
+            console.log('input storage: ',input_storage);
+            update_display();
+            decimalsOn = false;
+        }
+    }
+    else if (numbersOn) {
+        console.log('store number button_value',button_value);
+        input_storage[storage_index]+=button_value;
+        console.log('input storage: ',input_storage);
+        update_display();
+        operatorOn = true;
+    }
 }
 
 //a function to store the operator with a parameter of the value of the button that was clicked
@@ -53,13 +71,31 @@ function store_number(button_value){
     //set the input storage at the stored index to an empty string
     //update display
 function store_operator(button_value){
-    console.log('store operator button_value',button_value);
-    storage_index++;
-    input_storage[storage_index]=button_value;
-    storage_index++;
-    input_storage[storage_index]='';
-    console.log("input storage = ",input_storage);
-    update_display();
+    if (operatorOn) {
+        console.log('store operator button_value', button_value);
+        storage_index++;
+        input_storage[storage_index] = button_value;
+        storage_index++;
+        input_storage[storage_index] = '';
+        console.log("input storage = ", input_storage);
+        update_display();
+        operatorOn = false;
+        numbersOn = true;
+        decimalsOn = true;
+    }
+    else if (operatorOn == false && input_storage.length > 0){
+        //input_storage.pop();
+        //input_storage.pop();
+
+        console.log("operatorOn: ", operatorOn);
+        //--storage_index;
+        input_storage[storage_index-1]= button_value;
+
+        //input_storage[storage_index] = '';
+        //$("#display").text(input_storage);
+        update_display();
+    }
+
 }
 //function to update the display
     //a variable name of output has been declared to equal an empty string
@@ -96,8 +132,10 @@ function perform_calculation(op1, op2, operator){
             solution = (op1 / op2);
             break;
     }
-    calc_display(solution);
-        input_storage = [solution];
+   // calc_display(solution);
+       // input_storage = [solution];
+        update_display();
+        return solution;
     /*if (solution == 0){
             input_storage = [""];
         }
@@ -113,7 +151,25 @@ function perform_calculation(op1, op2, operator){
     //conditional statement using jQuery selecting the display will display error if none of the conditionals above are true
     //after the for loop has iterated through the perform calculation function is called. this will perform the calculation
 function do_math(){
+    var total = input_storage[0];
+    var newOperator = input_storage[1]; //set to null
+    var numAfter = input_storage[2]; //set to null
     for(var i=0; i < input_storage.length; i++){
+        if ("+-*/".indexOf(input_storage[i])>=0){
+            newOperator = input_storage[i];
+            numAfter = input_storage[i+1];
+            console.log("total: ", total + " newop:", newOperator + " 2nd num: ", numAfter);
+            total = perform_calculation(parseFloat(total),parseFloat(numAfter),newOperator);
+
+        }
+    }
+    input_storage = [total.toString()];
+    storage_index = 0;
+    operatorOn = true;
+    numbersOn = false;
+    console.log("storage after math: " + input_storage);
+    update_display();
+   /* for(var i=0; i < input_storage.length; i++){
         if (i == 0){
             //var op1 = parseInt(input_storage[i]);
             var op1 = parseFloat(input_storage[i]);
@@ -128,26 +184,30 @@ function do_math(){
         else {
             $("#display").text("error");
         }
-    }
-    perform_calculation(op1, op2, operator);
+    }*/
+    //perform_calculation(op1, op2, operator);
 }
 
 //this is a function to display the calculation and is tied to the equal button.
     //jQuery selects the display and will output the final answer of the calculation
-function calc_display(solve_equation) {
+/*function calc_display(solve_equation) {
     $("#display").text(solve_equation);
-}
+}*/
 
 function clear_all(){
     $("#display").empty();
     input_storage = [""];
     storage_index =0;
     $("#display").text(0);
+    numbersOn = true;
+    operatorOn = false;
+    decimalsOn = true;
 }
 
 function clear_one(){
     input_storage.pop();
     //--storage_index;
     input_storage[storage_index]='';
-    $("#display").text(input_storage);
+    //$("#display").text(input_storage);
+    update_display();
 }
