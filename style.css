@@ -34,7 +34,7 @@ button {
     border-radius: 20%;
 }
 
-#clear {
+#clearAll, #clearOne {
     width:49%;
     padding-bottom: 15%;
     background-color: white;

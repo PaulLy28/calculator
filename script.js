@@ -31,6 +31,11 @@
 /* n[i] is an array of operators and operands that have been entered
 ["+", "-", "*","/"].indexOf(n[i]);
 */
+//declare global variables. set storage to an empty array with an empty string and declare index position as 0.
+//set onload and click handlers
+    //jQuery selector to select the class numbers and all childs with the ID of numbers with a click handler function.  the function will display the stored number when one of the buttons is clicked and display the text of the button clicked
+    //jQuery selector to select the class numbers and all childs with the ID of operator with a click handler function.  the function will display the stored operator when one of the buttons is clicked and display the text of the button clicked
+    //jQuery selector to select the class numbers and all childs with the ID of equalSign with a click handler function.  the function will call a function to complete the math done between the stored number and store operator.
 var input_storage = [''];
 var storage_index = 0;
 $(document).ready(function(){
@@ -48,11 +53,22 @@ $(document).ready(function(){
         console.log("equal button clicked");
         console.log("this is", this);
         do_math();
-       // update_display();
     });
 
+    $(".numbers > #clearAll").click(function(){
+        console.log("clear all button clicked");
+        clear_all();
+    });
+
+    $(".numbers > #clearOne").click(function(){
+        console.log("clear one button clicked");
+        clear_one();
+    });
 });
 
+//a function to store the value of the number clicked with a parameter of the value of the button that was clicked
+    //the input array that is going to store the numbers will be the variable name for the array at the variable name for the position of the index plus the value of the button.
+    //call the function to update the display
 function store_number(button_value){
     console.log('store number button_value',button_value);
     input_storage[storage_index]+=button_value;
@@ -60,6 +76,12 @@ function store_number(button_value){
     update_display();
 }
 
+//a function to store the operator with a parameter of the value of the button that was clicked
+    //the function will increment the index
+    //the input array at the stored index position will be equal to the button value
+    //increment the index position once again
+    //set the input storage at the stored index to an empty string
+    //update display
 function store_operator(button_value){
     console.log('store operator button_value',button_value);
     storage_index++;
@@ -69,7 +91,11 @@ function store_operator(button_value){
     console.log("input storage = ",input_storage);
     update_display();
 }
-
+//function to update the display
+    //a variable name of output has been declared to equal an empty string
+    //a for loop where i is equal to 0, while i is less than the length of the input array. (i will increment after the use) the out is concatenated to be the output plus the array at position i
+    //end of for loop
+    //jQuery selecting the display and adding the text method with the content being the the variable name output
 function update_display(){
     var output = '';
     for(var i=0; i<input_storage.length; i++){
@@ -77,7 +103,13 @@ function update_display(){
     }
     $("#display").text(output);
 }
-
+//this will perform the calculation of each operand and operator.  a function has been defined with 3 paramenters, 2 operands and an operator
+    //a variable with a name of solution set to undefined
+    //switch statement with the expression of operator and 4 cases.
+        //1st case is set to operator of +, if true, then the solution will be the sum of the two operand. break will be the end of the switch. it will then proceed to the function call of calc_display. calc_display has a parameter of the variable declared which is solution in this case. when the calc_display function with a parameter of solution is called it will set the array equal to an array with the solution. if false it will move to the next case.
+        //2nd case is set to operator of -, if true, then the solution will be the difference of the two operand. break will be the end of the switch. if false it will move to the next case.
+        //3rd case is set to operator of *, if true, then the solution will be a product of the two operand. break will be the end of the switch. if false it will move to the next case.
+        //the last case is set to operator of /, if true, then the solution will divide the two operands. break will be the end of the switch. if false it will move to the next case.
 function perform_calculation(op1, op2, operator){
     var solution;
     switch (operator) {
@@ -95,23 +127,32 @@ function perform_calculation(op1, op2, operator){
             break;
     }
     calc_display(solution);
-        if (solution == 0){
+        input_storage = [solution];
+    /*if (solution == 0){
             input_storage = [""];
         }
         else {
-            input_storage = [solution, ""];
-        }
+            input_storage = [solution];
+        }*/
 }
-
+//function defined to process the calculation
+    //for loop where i is equal to 0, while i is less than the length of the storage array. i will increment after the i is used.
+    //conditional statement for when i (the index position) is equal to zero, a variable with name op1 will be equal to the parseInt method with the parameter of the array storage at index position i. if false move to the next comment
+    //conditional statement for when  i (the index position) is equal to one, a variable with name operator will be equal to the array at index i. if false move to the next comment
+    //conditional statement for when i (the index position) is equal to 2, a variable with name op2 will be equal to the parseInt method with the parameter of the array storage at index position i. if false move to the next comment
+    //conditional statement using jQuery selecting the display will display error if none of the conditionals above are true
+    //after the for loop has iterated through the perform calculation function is called. this will perform the calculation
 function do_math(){
     for(var i=0; i < input_storage.length; i++){
         if (i == 0){
+            //var op1 = parseInt(input_storage[i]);
             var op1 = parseFloat(input_storage[i]);
         }
         else if (i == 1) {
             var operator = input_storage[i];
         }
         else if (i == 2) {
+            //var op2 = parseInt(input_storage[i]);
             var op2 = parseFloat(input_storage[i]);
         }
         else {
@@ -121,6 +162,20 @@ function do_math(){
     perform_calculation(op1, op2, operator);
 }
 
+//this is a function to display the calculation and is tied to the equal button.
+    //jQuery selects the display and will output the final answer of the calculation
 function calc_display(solve_equation) {
     $("#display").text(solve_equation);
+}
+
+function clear_all(){
+    $("#display").empty();
+    input_storage = [""];
+    storage_index =0;
+    $("#display").text("");
+}
+
+function clear_one(){
+    input_storage.pop();
+    $("#display").text(input_storage[i]);
 }
