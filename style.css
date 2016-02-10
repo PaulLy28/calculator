@@ -14,7 +14,7 @@ html {
     border-radius: 2%;
     background: #0d0df2;
     background: linear-gradient(#0d0df2, #8bceec);
-    box-shadow: 1px 10px #009de4, 0px 20px 25px rgba(0,0,0,2);
+    box-shadow: 1px 10px #009de4, 0 20px 25px black;
 }
 
 #display {
@@ -27,7 +27,7 @@ html {
     margin: 2% 5%;
     background-color: darkolivegreen;
     *background: rgba(0,0,0,0.2);
-    box-shadow: inset 0px 10px rgba(0,0,0,0.2);
+    box-shadow: inset 0 10px rgba(0,0,0,0.2);
     border-radius: 2%;
 /*without this if you click on a number 17 times it will be displayed inside the "display screen" but if you click it anymore than that it will flow out of the "display screen." need to cap off amount of numbers that can be clicked, because even if the overflow of numbers/operators are hidden it still might be storing those values to be used*/
     overflow: hidden;
@@ -41,40 +41,14 @@ html {
 button {
     width: 23%;
     padding-bottom: 20%;
-    *padding: 13% 10%;
     display: inline-block;
     background-color: white;
-    margin: .2% .2%;
+    margin: 1% .2%;
     position: relative;
     vertical-align: top;
     color: black;
-    border 1px solid green;
     border-radius: 20%;
-
-
-  /*  width: 24%;
-    padding-bottom: 25%;
-    display: inline-block;
-    background-color: orangered;
-    margin: .2% .2%;
-    position: relative;
-    vertical-align: top;
-    color: black;
-    border 1px solid green;
-    border-radius: 20%;*/
-}
-
-/*.row {
-    margin-left: 5%;
-}*/
-
-#clearAll, #clearOne {
-    width:47%;
-    padding-bottom: 10%;
-    background-color: white;
-    font-size: 2vw;
-    border-radius: 10%;
-
+    box-shadow: 0 7px gray;
 }
 
 button span {
@@ -83,11 +57,79 @@ button span {
     top: 40%;
     left: 52%;
     transform: translate(50%, 50%);
- /*   font-size: 2vw;
-    position: absolute;
-    top: 50%;
-    left: 52%;
-    transform: translate(50%, 50%);*/
+}
+
+#clearAll, #clearOne {
+    width:47%;
+    padding-bottom: 10%;
+    background: lightskyblue;
+    font-size: 2vw;
+    border-radius: 10%;
+}
+
+#operator {
+    background: lightblue;
+}
+/*removes blue border*/
+button:focus  {
+    outline: 0;
+}
+/*adding hover effects to the buttons*/
+#numbers:hover {
+    background: #009de4;
+    box-shadow: 0 8px #717a33;
+    color: white;
+}
+
+#operator:hover {
+    background: #009de4;
+    box-shadow: 0 8px #717a33;
+    color: white;
+}
+
+#equalSign:hover {
+    background: #009de4;
+    box-shadow: 0 8px #717a33;
+    color: white;
+}
+
+#clearOne:hover {
+    background: #009de4;
+    box-shadow: 0 8px #717a33;
+    color: white;
+}
+
+#clearAll:hover {
+    background: #009de4;
+    box-shadow: 0 8px #717a33;
+    color: white;
+}
+
+/*adding pressed effect to the buttons*/
+
+#numbers:active {
+    box-shadow: 0 8px #009de4;
+    top: 8px;
+}
+
+#operator:active {
+    box-shadow: 0 8px #009de4;
+    top: 8px;
+}
+
+#equalSign:active {
+    box-shadow: 0 8px #009de4;
+    top: 8px;
+}
+
+#clearOne:active {
+    box-shadow: 0 8px #009de4;
+    top: 8px;
+}
+
+#clearAll:active {
+    box-shadow: 0 8px #009de4;
+    top: 8px;
 }
 
 @media screen and (max-width: 375px) {
