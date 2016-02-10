@@ -1,10 +1,13 @@
 /*basic calculator*/
-
+/*comprehensive*/
 //declare global variables. set storage to an empty array with an empty string and declare index position as 0.
 //set on load and click handlers
-    //jQuery selector to select the class numbers and all child's with the ID of numbers with a click handler function.  the function will display the stored number when one of the buttons is clicked and display the text of the button clicked
-    //jQuery selector to select the class numbers and all child's with the ID of operator with a click handler function.  the function will display the stored operator when one of the buttons is clicked and display the text of the button clicked
-    //jQuery selector to select the class numbers and all child's with the ID of equalSign with a click handler function.  the function will call a function to complete the math done between the stored number and store operator.
+    //jQuery selector to select the class numbers and all child's with the id of numbers with a click handler function.  the function will get the stored number when one of the buttons is clicked and get the text of the button clicked
+    //jQuery selector to select the class numbers and all child's with the id of operator with a click handler function.  the function will get the stored operator when one of the buttons is clicked and get the text of the button clicked
+    //jQuery selector to select the class numbers and all child's with the id of equalSign with a click handler function.  the function will call a do_calc function to complete the math done between the stored number and store operator.
+    //jQuery selector to select the class of row and id of clearAll with a click handler function. the function will call a clear all function to reset the screen the calculation
+    //jQuery selector to select the class of row and id of clearOne with a click handler function. the function will call a clear one function to clear the last operand or operator clicked
+
 var input_storage = [''];
 var storage_index = 0;
 var operatorOn = false;
@@ -26,49 +29,62 @@ $(document).ready(function(){
     $(".numbers > #equalSign").click(function(){
         console.log("equal button clicked");
         console.log("this is", this);
-        var a = input_storage.length;
-        console.log("a last value: ",a,  input_storage[a]);
-        if (a > 2 && input_storage[a -1] != "") {
-            do_math();
-        }
-        else if (a == 1) {
-            input_storage[1] = lastOp;
-            input_storage[2]= lastNum;
-            do_math();
-        }
-        else if (a > 2 && input_storage[a -1] == ""){
-            //input_storage[1] = lastOp;
-            //input_storage[2] = input_storage[0];
-            if (a == 3){
-                input_storage[2] = input_storage[0];
-                do_math();
-            }
-            else {
-                input_storage.pop();
-                var lastStoredOp = input_storage.pop();
-                do_math();
-                input_storage[1] = lastStoredOp;
-                input_storage[2] = input_storage[0];
-                do_math();
-            }
-        }
+        do_calc();
     });
 
-    $(".row > #clearAll").click(function(){
+    $(".row #clearAll").click(function(){
         console.log("clear all button clicked");
         clear_all();
     });
 
-    $(".row > #clearOne").click(function(){
+    $(".row #clearOne").click(function(){
         console.log("clear one button clicked");
         clear_one();
     });
 
 });
 
+
+//the function to complete most of the comprehensive operations
+    //declared a short variable to replace typing in input_storage.length
+    //conditional if statement: if input_storage.length is greater than two and input_storage at input_storage.length minus one is not equal to an empty string are true for both conditions the do_math function will be called.
+    //conditional else if statement: (if the if statement above is false) else if input_storage is equal to 1, then input_storage at storage_index position 1 (first operator) will equal the variable name lastOp. this will store the last operator clicked. input_storage at storage_index position 2 (last number clicked to complete the calculation) will equal the variable name lastNum. this will store the last number clicked. call the function to do math
+    //conditional else if statement: (if the else if statement above is false) else if input_storage.length is greater than two and input_storage at input_storage.length minus one is equal to an empty string are true for both conditions then proceed to a nested conditional.
+        //if input_storage.length is equal to 3 then  input_storage at storage_index position 2 is equal to input_storage at storage_index position 0.the do_math function will be called.
+        //else if the condition above is false. then a method will be called to delete the last input storage position.  then make a variable (lastStoredOp) and assign it to the method that will delete the last input storage position. then call the function to do math. then set the input_storage at storage_index position 1 is equal to the variable that was just created (lastStoredOp). then input_storage at storage_index position 2 is equal to input_storage at position 0. then do math.
+        //end conditionals and function
+function do_calc(){
+    var a = input_storage.length;
+    console.log("a last value: ",a,  input_storage[a]);
+    if (a > 2 && input_storage[a -1] != "") {
+        do_math();
+    }
+    else if (a == 1) {
+        input_storage[1] = lastOp;
+        input_storage[2]= lastNum;
+        do_math();
+    }
+    else if (a > 2 && input_storage[a -1] == ""){
+        if (a == 3){
+            input_storage[2] = input_storage[0];
+            do_math();
+        }
+        else {
+            input_storage.pop();
+            var lastStoredOp = input_storage.pop();
+            do_math();
+            input_storage[1] = lastStoredOp;
+            input_storage[2] = input_storage[0];
+            do_math();
+        }
+    }
+}
+
+
 //a function to store the value of the number clicked with a parameter of the value of the button that was clicked
-    //the input array that is going to store the numbers will be the variable name for the array at the variable name for the position of the index plus the value of the button.
-    //call the function to update the display
+    //conditional statement: if button_value is equal to a decimal character in string form then proceed to nested if statement.
+        //if the above condition is true this conditional will execute. if it is possible to click on a number and a decimal then input_storage at storage_index position will be the button value. then the display will be updated. then the decimal will no longer be clickable
+        //when the if conditional is false, else if will execute.  else if it is possible to click a number then input_storage at storage_index position will be the button value. then update the display. then make the operators clickable.
 function store_number(button_value){
     if (button_value == "."){
         if (numbersOn && decimalsOn){
@@ -108,15 +124,8 @@ function store_operator(button_value){
         decimalsOn = true;
     }
     else if (operatorOn == false && input_storage.length > 0){
-        //input_storage.pop();
-        //input_storage.pop();
-
         console.log("operatorOn: ", operatorOn);
-        //--storage_index;
         input_storage[storage_index-1]= button_value;
-
-        //input_storage[storage_index] = '';
-        //$("#display").text(input_storage);
         update_display();
     }
 
