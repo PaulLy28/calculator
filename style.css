@@ -12,9 +12,9 @@ html {
     margin: auto;
     transform: translateY(5%);
     border-radius: 2%;
-    background: #0d0df2;
-    background: linear-gradient(#0d0df2, #8bceec);
-    box-shadow: 1px 10px #009de4, 0 20px 25px black;
+    background: #4b79a1;
+    background: -webkit-linear-gradient(to bottom, #4b79a1, #283e51);
+    background: linear-gradient(to bottom, #4b79a1, #283e51);
 }
 
 #display {
@@ -48,7 +48,7 @@ button {
     vertical-align: top;
     color: black;
     border-radius: 20%;
-    box-shadow: 0 7px gray;
+    box-shadow: 0 4px gray;
 }
 
 button span {
@@ -81,59 +81,59 @@ button:focus  {
 /*adding hover effects to the buttons*/
 #numbers:hover {
     background: #009de4;
-    box-shadow: 0 8px #717a33;
+    box-shadow: 0 4px aquamarine;
     color: white;
 }
 
 #operator:hover {
     background: #009de4;
-    box-shadow: 0 8px #717a33;
+    box-shadow: 0 4px aquamarine;
     color: white;
 }
 
 #equalSign:hover {
     background: #009de4;
-    box-shadow: 0 8px #717a33;
+    box-shadow: 0 4px aquamarine;
     color: white;
 }
 
 #clearOne:hover {
     background: #009de4;
-    box-shadow: 0 8px #717a33;
+    box-shadow: 0 4px aquamarine;
     color: white;
 }
 
 #clearAll:hover {
     background: #009de4;
-    box-shadow: 0 8px #717a33;
+    box-shadow: 0 4px aquamarine;
     color: white;
 }
 
 /*adding pressed effect to the buttons*/
 
 #numbers:active {
-    box-shadow: 0 8px #009de4;
-    top: 8px;
+    box-shadow: 0 4px #009de4;
+    top: 4px;
 }
 
 #operator:active {
-    box-shadow: 0 8px #009de4;
-    top: 8px;
+    box-shadow: 0 4px #009de4;
+    top: 4px;
 }
 
 #equalSign:active {
-    box-shadow: 0 8px #009de4;
-    top: 8px;
+    box-shadow: 0 4px #009de4;
+    top: 4px;
 }
 
 #clearOne:active {
-    box-shadow: 0 8px #009de4;
-    top: 8px;
+    box-shadow: 0 4px #009de4;
+    top: 4px;
 }
 
 #clearAll:active {
-    box-shadow: 0 8px #009de4;
-    top: 8px;
+    box-shadow: 0 4px #009de4;
+    top: 4px;
 }
 
 @media screen and (max-width: 375px) {
