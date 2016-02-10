@@ -153,7 +153,12 @@ function perform_calculation(op1, op2, operator){
             solution = (op1 * op2);
             break;
         case "/":
-            solution = (op1 / op2);
+            if (op2 == 0){
+                solution = "Error"
+            }
+            else {
+                solution = (op1 / op2);
+            }
             break;
     }
    // calc_display(solution);
