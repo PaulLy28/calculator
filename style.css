@@ -67,11 +67,11 @@ button span {
     border-radius: 10%;
 }
 
-#operator {
+.calc_operator {
     background: lightblue;
 }
 
-#equalSign {
+.calc_equalSign {
     background: lightgreen;
 }
 /*removes blue border*/
@@ -79,19 +79,19 @@ button:focus  {
     outline: 0;
 }
 /*adding hover effects to the buttons*/
-#numbers:hover {
+.calc_numbers:hover {
     background: #009de4;
     box-shadow: 0 4px aquamarine;
     color: white;
 }
 
-#operator:hover {
+.calc_operator:hover {
     background: #009de4;
     box-shadow: 0 4px aquamarine;
     color: white;
 }
 
-#equalSign:hover {
+.calc_equalSign:hover {
     background: #009de4;
     box-shadow: 0 4px aquamarine;
     color: white;
@@ -111,17 +111,17 @@ button:focus  {
 
 /*adding pressed effect to the buttons*/
 
-#numbers:active {
+.calc_numbers:active {
     box-shadow: 0 4px #009de4;
     top: 4px;
 }
 
-#operator:active {
+.calc_operator:active {
     box-shadow: 0 4px #009de4;
     top: 4px;
 }
 
-#equalSign:active {
+.calc_equalSign:active {
     box-shadow: 0 4px #009de4;
     top: 4px;
 }
