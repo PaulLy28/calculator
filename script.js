@@ -15,6 +15,7 @@ var numbersOn = true;
 var decimalsOn = true;
 var lastNum;
 var lastOp;
+
 $(document).ready(function(){
     $('.numbers > .calc_numbers').click(function(){
         console.log('this is ',this);
@@ -209,6 +210,8 @@ function do_math(){
     numbersOn = false;
     console.log("storage after math: " + input_storage);
     update_display();
+
+
    /* for(var i=0; i < input_storage.length; i++){
         if (i == 0){
             //var op1 = parseInt(input_storage[i]);
@@ -236,12 +239,16 @@ function do_math(){
 
 function clear_all(){
     $("#display").empty();
-    input_storage = [""];
-    storage_index =0;
+    input_storage = [''];
+    storage_index = 0;
     $("#display").text(0);
     numbersOn = true;
     operatorOn = false;
     decimalsOn = true;
+    lastOp = null;
+    lastNum = null;
+    console.log("lastop reset", lastOp);
+    console.log("lastnum reset", lastNum);
 }
 
 function clear_one(){
