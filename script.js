@@ -16,17 +16,17 @@ var decimalsOn = true;
 var lastNum;
 var lastOp;
 $(document).ready(function(){
-    $('.numbers > #numbers').click(function(){
+    $('.numbers > .calc_numbers').click(function(){
         console.log('this is ',this);
         store_number($(this).text());
     });
 
-    $('.numbers > #operator').click(function(){
+    $('.numbers > .calc_operator').click(function(){
         console.log('operator button clicked');
         store_operator($(this).text());
     });
 
-    $(".numbers > #equalSign").click(function(){
+    $(".numbers > .calc_equalSign").click(function(){
         console.log("equal button clicked");
         console.log("this is", this);
         do_calc();
