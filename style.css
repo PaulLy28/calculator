@@ -1,0 +1,152 @@
+html {
+    height: 100%;
+    background: white;
+    background: radial-gradient(circle, white 20%, lightblue);
+}
+
+.calculator {
+    width: 30%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 1px;
+    margin: auto;
+    transform: translateY(5%);
+    border-radius: 2%;
+    background: #4b79a1;
+    background: -webkit-linear-gradient(to bottom, #4b79a1, #283e51);
+    background: linear-gradient(to bottom, #4b79a1, #283e51);
+}
+
+#display {
+    height: 10vh;
+    width: 27vw;
+    box-sizing: border-box;
+    padding: 20px 20px 10px 10px;
+    text-align: right;
+    font-size: 4em;
+    margin: 2% 5%;
+    background-color: darkolivegreen;
+    *background: rgba(0,0,0,0.2);
+    box-shadow: inset 0 10px rgba(0,0,0,0.2);
+    border-radius: 2%;
+/*without this if you click on a number 17 times it will be displayed inside the "display screen" but if you click it anymore than that it will flow out of the "display screen." need to cap off amount of numbers that can be clicked, because even if the overflow of numbers/operators are hidden it still might be storing those values to be used*/
+    overflow: hidden;
+}
+
+.numbers {
+    margin-left: 5%;
+    padding-bottom: 2%;
+}
+
+button {
+    width: 23%;
+    padding-bottom: 20%;
+    display: inline-block;
+    background-color: white;
+    margin: 1% .2%;
+    position: relative;
+    vertical-align: top;
+    color: black;
+    border-radius: 20%;
+    box-shadow: 0 4px gray;
+}
+
+button span {
+    font-size: 2vw;
+    position: absolute;
+    top: 40%;
+    left: 52%;
+    transform: translate(50%, 50%);
+}
+
+#clearAll, #clearOne {
+    width:47%;
+    padding-bottom: 10%;
+    background: lightskyblue;
+    font-size: 2vw;
+    border-radius: 10%;
+}
+
+.calc_operator {
+    background: lightblue;
+}
+
+.calc_equalSign {
+    background: lightgreen;
+}
+/*removes blue border*/
+button:focus  {
+    outline: 0;
+}
+/*adding hover effects to the buttons*/
+.calc_numbers:hover {
+    background: #009de4;
+    box-shadow: 0 4px aquamarine;
+    color: white;
+}
+
+.calc_operator:hover {
+    background: #009de4;
+    box-shadow: 0 4px aquamarine;
+    color: white;
+}
+
+.calc_equalSign:hover {
+    background: #009de4;
+    box-shadow: 0 4px aquamarine;
+    color: white;
+}
+
+#clearOne:hover {
+    background: #009de4;
+    box-shadow: 0 4px aquamarine;
+    color: white;
+}
+
+#clearAll:hover {
+    background: #009de4;
+    box-shadow: 0 4px aquamarine;
+    color: white;
+}
+
+/*adding pressed effect to the buttons*/
+
+.calc_numbers:active {
+    box-shadow: 0 4px #009de4;
+    top: 4px;
+}
+
+.calc_operator:active {
+    box-shadow: 0 4px #009de4;
+    top: 4px;
+}
+
+.calc_equalSign:active {
+    box-shadow: 0 4px #009de4;
+    top: 4px;
+}
+
+#clearOne:active {
+    box-shadow: 0 4px #009de4;
+    top: 4px;
+}
+
+#clearAll:active {
+    box-shadow: 0 4px #009de4;
+    top: 4px;
+}
+
+@media screen and (max-width: 375px) {
+    .calculator {
+        width: 95%;
+    }
+    button {
+        width: 23.5%;
+    }
+    button span {
+        font-size: 6vw;
+    }
+    #clear {
+        font-size: 8vw;
+    }
+}

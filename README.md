@@ -1,29 +1,28 @@
 # Calculator
 
-## Version 1
-#### Description
-Version 1 takes the layout and basic button click functionality built in the 2 previous versions and then ties in the calculation functionality. This version works toward more OOP understandings
-by taking the inputs from the calculator and inserting them into objects and then those objects into an array.
+This is a very basic calculator. It does not follow the rules for order of operations. To use the calculator click on a number followed by an operator and then click the equal button to see the result.
 
+* User will click on a number followed by an operator followed by another number.
+* User will click on the equal sign to get the result.
+* The calculator will perform the calculation from left to right and does not follow order of operations.
+* The C button will clear only one number from the right.  It will not clear the operator. 
+* If a number is entered followed by an incorrect operator, just click on the correct operator and the operator will change.
+* Click CE to clear all.
 
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v1#getting-started">Getting Started</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v1#scope">View Scope</a>
+### Version
+v1.0
 
-## Version 0.5
-#### Description
-Version 0.5 adds in user functionality without needing to write the underneath logic of a calculator. With the introduction
-to the calculator object the user can interact with the object to receive the values after calculation has been completed.
+### Tech
 
+Calculator uses HTML, CSS, Javascript and jQuery.
 
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.5#getting-started">Getting Started</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.5#scope">View Scope</a>
+* [HTML]
+* [CSS]
+* [Javascript]
+* [jQuery]
 
-## Version 0.1
-#### Description
-Version 0.1 is the starting point of the Calculator Project. You must create the base structure and styles, using bootstrap as you deem necessary. For this version we are looking to see that you
-understand how to create the basic structure of a web application, style it, and make it reasonably responsive.  No functionality will be encoded with this version.
+### Things learned
 
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#getting-started">Getting Started</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#scope">View Scope</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#design">View Design</a>
-- <a href="https://github.com/Learning-Fuze/calculator/tree/v0.1#assignments---aka-criteria-for-success-on-this-version-of-the-project">View Assignments</a>
+* First creating a minimum functioning calculator assuming perfect input.
+* Next moving onto specific user inputs that require multiple entries.
+
