@@ -1,4 +1,3 @@
-/*basic calculator*/
 /*comprehensive*/
 //declare global variables. set storage to an empty array with an empty string and declare index position as 0.
 //set on load and click handlers
@@ -175,12 +174,6 @@ function perform_calculation(op1, op2, operator){
        // input_storage = [solution];
         update_display();
         return solution;
-    /*if (solution == 0){
-            input_storage = [""];
-        }
-        else {
-            input_storage = [solution];
-        }*/
 }
 //function defined to process the calculation
     //for loop where i is equal to 0, while i is less than the length of the storage array. i will increment after the i is used.
@@ -210,33 +203,10 @@ function do_math(){
     numbersOn = false;
     console.log("storage after math: " + input_storage);
     update_display();
-
-
-   /* for(var i=0; i < input_storage.length; i++){
-        if (i == 0){
-            //var op1 = parseInt(input_storage[i]);
-            var op1 = parseFloat(input_storage[i]);
-        }
-        else if (i == 1) {
-            var operator = input_storage[i];
-        }
-        else if (i == 2) {
-            //var op2 = parseInt(input_storage[i]);
-            var op2 = parseFloat(input_storage[i]);
-        }
-        else {
-            $("#display").text("error");
-        }
-    }*/
-    //perform_calculation(op1, op2, operator);
 }
 
 //this is a function to display the calculation and is tied to the equal button.
     //jQuery selects the display and will output the final answer of the calculation
-/*function calc_display(solve_equation) {
-    $("#display").text(solve_equation);
-}*/
-
 function clear_all(){
     $("#display").empty();
     input_storage = [''];
@@ -253,8 +223,6 @@ function clear_all(){
 
 function clear_one(){
     input_storage.pop();
-    //--storage_index;
     input_storage[storage_index]='';
-    //$("#display").text(input_storage);
     update_display();
 }
