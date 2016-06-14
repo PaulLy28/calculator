@@ -26,3 +26,6 @@ Calculator uses HTML, CSS, Javascript and jQuery.
 * First creating a minimum functioning calculator assuming perfect input.
 * Next moving onto specific user inputs that require multiple entries.
 
+# Live Demo 
+
+[Live Demo](https://paully28.github.io/calculator/)
