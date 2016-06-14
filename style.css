@@ -18,12 +18,14 @@ html {
 }
 
 #display {
-    height: 10vh;
-    width: 27vw;
+    height: 30%;
+    width: 90%;
+/*    height: 10vh;
+    width: 27vw;*/
     box-sizing: border-box;
     padding: 20px 20px 10px 10px;
     text-align: right;
-    font-size: 4em;
+    font-size: 6vmin;
     margin: 2% 5%;
     background-color: darkolivegreen;
     *background: rgba(0,0,0,0.2);
@@ -49,6 +51,7 @@ button {
     color: black;
     border-radius: 20%;
     box-shadow: 0 4px gray;
+    box-sizing: border-box;
 }
 
 button span {
@@ -57,6 +60,7 @@ button span {
     top: 40%;
     left: 52%;
     transform: translate(50%, 50%);
+    box-sizing: border-box;
 }
 
 #clearAll, #clearOne {
@@ -65,14 +69,17 @@ button span {
     background: lightskyblue;
     font-size: 2vw;
     border-radius: 10%;
+    box-sizing: border-box;
 }
 
 .calc_operator {
     background: lightblue;
+    box-sizing: border-box;
 }
 
 .calc_equalSign {
     background: lightgreen;
+    box-sizing: border-box;
 }
 /*removes blue border*/
 button:focus  {
@@ -141,12 +148,12 @@ button:focus  {
         width: 95%;
     }
     button {
-        width: 23.5%;
+        width: 22.75%;
     }
     button span {
         font-size: 6vw;
     }
-    #clear {
-        font-size: 8vw;
+    #clearAll, #clearOne {
+        font-size: 6vw;
     }
 }
