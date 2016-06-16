@@ -157,3 +157,18 @@ button:focus  {
         font-size: 6vw;
     }
 }
+
+@media screen and (max-width: 414px) {
+    .calculator {
+        width: 95%;
+    }
+    button {
+        width: 22.75%;
+    }
+    button span {
+        font-size: 6vw;
+    }
+    #clearAll, #clearOne {
+        font-size: 6vw;
+    }
+}
